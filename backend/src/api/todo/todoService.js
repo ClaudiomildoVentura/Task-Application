@@ -10,3 +10,13 @@ try {
 } catch (error) {
  console.log(error)
 }
+/*
+|--------------------------------------------------------------------------
+| Services.js
+|--------------------------------------------------------------------------
+|
+| Arquivo ccontendo os verbos http necessários
+|
+|Na linha 6, o método updateOptions realiza as devidas validações
+|
+*/

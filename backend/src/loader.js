@@ -7,4 +7,13 @@ try {
 } catch (error) {
     console.log(error)
 }
-/* Este arquivo é responsável por subir o servidor. E esta declarado no package j.son */
+/*
+|--------------------------------------------------------------------------
+| loader.js
+|--------------------------------------------------------------------------
+|
+| Este arquivo é responsável por subir o servidor. E esta declarado no
+| package j.son
+|
+|
+*/

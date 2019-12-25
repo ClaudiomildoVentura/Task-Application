@@ -11,5 +11,14 @@ try {
     module.exports = restful.model('Todo', todoSchema)
 
 } catch (error) {
-
+console.log(error)
 }
+/*
+|--------------------------------------------------------------------------
+| todo.js
+|--------------------------------------------------------------------------
+|
+| Arquivo contendo os schema da base de dados.
+|
+|
+*/

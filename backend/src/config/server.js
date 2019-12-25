@@ -13,9 +13,18 @@ try {
         console.log(`Server on, at localhost: ${port}`)
     })
 
-     module.exports = server
+    module.exports = server
 
 } catch (error) {
     console.log(error)
 }
-/* Arquivo com as configurações do servidor */
+/*
+|--------------------------------------------------------------------------
+| server.js
+|--------------------------------------------------------------------------
+|
+| Arquivo com as módulos e midlleware do servidor
+|
+|
+|
+*/

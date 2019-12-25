@@ -7,10 +7,19 @@ try {
         server.use('/api', router)
 
         const todoService = require('../api/todo/todoService')
-        todoService.register(router, '/todos') /* O metodo register utiliza todos verbos que foram declarados */
-
+        todoService.register(router, '/todos') /*  */
     }
 
 } catch (error) {
-
+    console.log(error)
 }
+/*
+|--------------------------------------------------------------------------
+| routes.js
+|--------------------------------------------------------------------------
+|
+| Arquivo com as rotas do servidor
+|
+|Na linha 10, o método register utiliza todos verbos que foram declarados
+|no todoServices
+*/
