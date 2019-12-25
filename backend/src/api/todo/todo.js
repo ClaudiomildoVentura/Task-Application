@@ -20,5 +20,4 @@ console.log(error)
 |
 | Arquivo contendo os schema da base de dados.
 |
-|
 */

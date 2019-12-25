@@ -3,11 +3,11 @@ try {
 
     module.exports = (server) => {
 
-        const router = express.Router()  /* api routes */
+        const router = express.Router()
         server.use('/api', router)
 
         const todoService = require('../api/todo/todoService')
-        todoService.register(router, '/todos') /*  */
+        todoService.register(router, '/todos')
     }
 
 } catch (error) {
@@ -20,6 +20,8 @@ try {
 |
 | Arquivo com as rotas do servidor
 |
-|Na linha 10, o método register utiliza todos verbos que foram declarados
-|no todoServices
+| Na linha 10, o método register utiliza todos verbos que foram declarados
+| no todoServices
+|
+| A declaração da rota ficou desta forma http://127.0.0.1:3000/api/todos
 */
