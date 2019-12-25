@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Header from '../template/header'
 
 export default class About extends Component {
