@@ -19,9 +19,9 @@ export default class Task extends Component {
         this.Clear = this.Clear.bind(this)
         this.Change = this.Change.bind(this)
         this.Search = this.Search.bind(this)
-        this.handleRemove = this.handleRemove.bind(this)
-        this.handleMarkAsDone = this.handleMarkAsDone.bind(this)
-        this.handleMarkAsPending = this.handleMarkAsPending.bind(this)
+        this.btnRemove = this.btnRemove.bind(this)
+        this.btnDone = this.btnDone.bind(this)
+        this.btnPending = this.btnPending.bind(this)
         this.refresh = this.refresh.bind(this)
     }
 
@@ -41,13 +41,13 @@ export default class Task extends Component {
     Search() {
         this.refresh(this.state.description)
     }
-    handleRemove(todo) {
+    btnRemove(todo) {
         axios.delete(`${URL}/${todo._id}`).then(res => this.refresh(this.state.description))
     }
-    handleMarkAsDone(todo) {
+    btnDone(todo) {
         axios.put(`${URL}/${todo._id}`, { ...todo, done: true }).then(res => this.refresh(this.state.description))
     }
-    handleMarkAsPending(todo) {
+    btnPending(todo) {
         axios.put(`${URL}/${todo._id}`, { ...todo, done: false }).then(res => this.refresh(this.state.description))
     }
     refresh(description = '') {
@@ -67,9 +67,9 @@ export default class Task extends Component {
                     description={this.state.description}
                 />
                 <List
-                    handleRemove={this.handleRemove}
-                    handleMarkAsDone={this.handleMarkAsDone}
-                    handleMarkAsPending={this.handleMarkAsPending}
+                    btnRemove={this.btnRemove}
+                    btnDone={this.btnDone}
+                    btnPending={this.btnPending}
                     list={this.state.list}
                 />
             </div>
