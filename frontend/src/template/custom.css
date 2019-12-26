@@ -8,6 +8,8 @@
 .tableActions {
     width: 155px;
 }
-.todoForm {
-    padding-bottom: 30px;
+.Form {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 55px;
 }

@@ -15,10 +15,10 @@ export default class Task extends Component {
             description: '',
             list: []
         }
-        this.handleAdd = this.handleAdd.bind(this)
-        this.handleClear = this.handleClear.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSearch = this.handleSearch.bind(this)
+        this.Add = this.Add.bind(this)
+        this.Clear = this.Clear.bind(this)
+        this.Change = this.Change.bind(this)
+        this.Search = this.Search.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.handleMarkAsDone = this.handleMarkAsDone.bind(this)
         this.handleMarkAsPending = this.handleMarkAsPending.bind(this)
@@ -28,17 +28,17 @@ export default class Task extends Component {
     componentDidMount() {
         this.refresh()
     }
-    handleAdd() {
+    Add() {
         const description = this.state.description
         axios.post(URL, { description }).then(resp => this.refresh())
     }
-    handleClear() {
+    Clear() {
         this.refresh()
     }
-    handleChange(e) {
+    Change(e) {
         this.setState({ ...this.state, description: e.target.value })
     }
-    handleSearch() {
+    Search() {
         this.refresh(this.state.description)
     }
     handleRemove(todo) {
@@ -60,10 +60,10 @@ export default class Task extends Component {
             <div>
                 <Header nameTitle="Cadastro de Tarefas" />
                 <Form
-                    handleAdd={this.handleAdd}
-                    handleClear={this.handleClear}
-                    handleChange={this.handleChange}
-                    handleSearch={this.handleSearch}
+                    Add={this.Add}
+                    Clear={this.Clear}
+                    Change={this.Change}
+                    Search={this.Search}
                     description={this.state.description}
                 />
                 <List
