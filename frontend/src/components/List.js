@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default props => {
-    const renderRows = () => {
+    const tableRow = () => {
         const listTable = props.list || []
         return listTable.map(todo => (
             <tr key={todo._id}>
@@ -15,17 +15,16 @@ export default props => {
         ))
     }
     return (
-        <table className='table table-dark"'>
-            <thead className="thead-dark">
+        <table className='table'>
+            <thead>
                 <tr>
                     <th>Descrição</th>
                     <th className="tableActions">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                {renderRows()}
+                {tableRow()}
             </tbody>
         </table>
     )
 }
-63

@@ -4,7 +4,7 @@ export default props => {
 
     const clickKey = (e) => {
         if (e.key === 'Enter') {
-             props.handleAdd()
+            props.handleAdd()
         } else if (e.key === 'Escape') {
             props.handleClear()
         }

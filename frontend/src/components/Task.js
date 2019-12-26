@@ -15,60 +15,63 @@ export default class Task extends Component {
             description: '',
             list: []
         }
-
         this.handleAdd = this.handleAdd.bind(this)
+        this.handleClear = this.handleClear.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.refresh = this.refresh.bind(this)
+        this.handleSearch = this.handleSearch.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.handleMarkAsDone = this.handleMarkAsDone.bind(this)
         this.handleMarkAsPending = this.handleMarkAsPending.bind(this)
-        this.handleSearch = this.handleSearch.bind(this)
-        this.handleClear = this.handleClear.bind(this)
+        this.refresh = this.refresh.bind(this)
+    }
 
+    componentDidMount() {
         this.refresh()
-
     }
-
-    refresh(description= '') {
-        const search = description ? `&description__regex=/${description}/`: ''
-        axios.get(`${URL}?sort=-createdAt${search}`).then(resp => this.setState({ ...this.state, description, list: resp.data }))
-    }
-
-    handleChange(e) {
-        this.setState({ ...this.state, description: e.target.value })
-    }
-
     handleAdd() {
         const description = this.state.description
         axios.post(URL, { description }).then(resp => this.refresh())
     }
-
-    handleRemove(todo) {
-        axios.delete(`${URL}/${todo._id}`).then(resp => this.refresh(this.state.description))
-    }
-
-    handleSearch() {
-        this.refresh(this.state.description)
-    }
-
     handleClear() {
         this.refresh()
     }
-
+    handleChange(e) {
+        this.setState({ ...this.state, description: e.target.value })
+    }
+    handleSearch() {
+        this.refresh(this.state.description)
+    }
+    handleRemove(todo) {
+        axios.delete(`${URL}/${todo._id}`).then(res => this.refresh(this.state.description))
+    }
     handleMarkAsDone(todo) {
-        axios.put(`${URL}/${todo._id}`, { ...todo, done: true }).then(resp => this.refresh(this.state.description))
+        axios.put(`${URL}/${todo._id}`, { ...todo, done: true }).then(res => this.refresh(this.state.description))
     }
     handleMarkAsPending(todo) {
-        axios.put(`${URL}/${todo._id}`, { ...todo, done: false }).then(resp => this.refresh(this.state.description))
+        axios.put(`${URL}/${todo._id}`, { ...todo, done: false }).then(res => this.refresh(this.state.description))
+    }
+    refresh(description = '') {
+        const search = description ? `&description__regex=/${description}/` : ''
+        axios.get(`${URL}?sort=-createdAt${search}`).then(resp => this.setState({ ...this.state, description, list: resp.data }))
     }
 
     render() {
         return (
             <div>
-                <Header nameTitle="Cadastro de tarefas" />
-
-                <Form handleAdd={this.handleAdd} handleClear={this.handleClear} handleChange={this.handleChange} description={this.state.description} handleSearch={this.handleSearch} />
-                <List list={this.state.list} handleRemove={this.handleRemove} handleMarkAsDone={this.handleMarkAsDone} handleMarkAsPending={this.handleMarkAsPending} />
+                <Header nameTitle="Cadastro de Tarefas" />
+                <Form
+                    handleAdd={this.handleAdd}
+                    handleClear={this.handleClear}
+                    handleChange={this.handleChange}
+                    handleSearch={this.handleSearch}
+                    description={this.state.description}
+                />
+                <List
+                    handleRemove={this.handleRemove}
+                    handleMarkAsDone={this.handleMarkAsDone}
+                    handleMarkAsPending={this.handleMarkAsPending}
+                    list={this.state.list}
+                />
             </div>
         )
     }
