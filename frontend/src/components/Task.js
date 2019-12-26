@@ -19,10 +19,10 @@ export default class Task extends Component {
         this.Clear = this.Clear.bind(this)
         this.Change = this.Change.bind(this)
         this.Search = this.Search.bind(this)
-        this.btnRemove = this.btnRemove.bind(this)
         this.btnDone = this.btnDone.bind(this)
-        this.btnPending = this.btnPending.bind(this)
         this.refresh = this.refresh.bind(this)
+        this.btnRemove = this.btnRemove.bind(this)
+        this.btnPending = this.btnPending.bind(this)
     }
 
     componentDidMount() {
