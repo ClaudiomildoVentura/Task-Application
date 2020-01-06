@@ -4,7 +4,7 @@
   "description": "Application developed in ReactJS and NodeJS for learning.",
   "main": "src/loader.js",
   "scripts": {
-    "start": "nodemon"
+    "dev": "nodemon"
   },
   "keywords": [],
   "author": "Claudiomildo Ventura",
