@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import { add, clear, changeDescription, search } from './actions'
 
 class Form extends Component {
@@ -21,6 +21,7 @@ class Form extends Component {
     componentWillMount() {
         this.props.search()
     }
+
     render() {
         const { add, search, description } = this.props
         return (
