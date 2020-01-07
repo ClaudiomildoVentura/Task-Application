@@ -46,7 +46,6 @@ class Form extends Component {
         )
     }
 }
-
 const mapStateToProps = state => ({ description: state.todo.description })
 const mapDispatchToProps = dispatch => bindActionCreators({ add, clear, changeDescription, search }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(Form)

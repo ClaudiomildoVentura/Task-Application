@@ -11,8 +11,8 @@ const List = props => {
             <tr key={todo._id}>
                 <td className={todo.done ? 'markedAsDone' : ''}>{todo.description}</td>
                 <td>
-                    <button type="button" className="btn btn-success" onClick={() => props.markedAsDone(todo)}>ok</button>
-                    <button type="button" className="btn btn-warning" onClick={() => props.markedAsPeding(todo)}>p</button>
+                    <button type="button" className="btn btn-success" onClick={() => props.markedAsDone(todo)}>OK</button>
+                    <button type="button" className="btn btn-warning" onClick={() => props.markedAsPeding(todo)}>P</button>
                     <button type="button" className="btn btn-danger" onClick={() => props.remove(todo)}>X</button>
                 </td>
             </tr>
