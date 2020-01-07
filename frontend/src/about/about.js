@@ -6,7 +6,7 @@ export default class About extends Component {
     render() {
         return (
             <div>
-                <Header nameTitle="Sobre"  />
+                <Header nameTitle="About"  />
             </div>
         )
     }
