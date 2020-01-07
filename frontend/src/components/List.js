@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { markedAsDone, markedAsPeding, remove } from './todoActions'
+import { markedAsDone, markedAsPeding, remove } from './actions'
 
 const List = props => {
 

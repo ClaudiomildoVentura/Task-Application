@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { add, clear, changeDescription, search } from './todoActions'
+import { add, clear, changeDescription, search } from './actions'
 
 class Form extends Component {
     constructor(props) {
