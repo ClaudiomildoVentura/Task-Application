@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { add, changeDescription, search } from './todoActions'
+import { add, clear, changeDescription, search } from './todoActions'
 
 class Form extends Component {
     constructor(props) {
@@ -13,8 +13,8 @@ class Form extends Component {
         const { add, description } = this.props
         if (e.key === 'Enter') {
             add(description)
-        } else if (e.key === 'Escape') {
-            this.props.Clear()
+        } else if (e.key === 'Esc') {
+            clear()
         }
     }
 
@@ -39,7 +39,7 @@ class Form extends Component {
                 <div>
                     <button type="button" className='btn btn-primary' onClick={()=> add(description)}>+</button>
                     <button type="button" className='btn btn-info' onClick={this.props.Search}>°</button>
-                    <button type="button" className='btn btn-secundary' onClick={this.props.Clear}>''</button>
+                    <button type="button" className='btn btn-secundary' onClick={this.props.clear}>''</button>
                 </div>
             </div>
         )
@@ -47,5 +47,5 @@ class Form extends Component {
 }
 
 const mapStateToProps = state => ({ description: state.todo.description })
-const mapDispatchToProps = dispatch => bindActionCreators({ add, changeDescription, search }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ add, clear, changeDescription, search }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(Form)
