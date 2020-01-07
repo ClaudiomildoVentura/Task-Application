@@ -1,19 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { markedAsDone, markedAsPeding, remove } from './actions'
+import { btnDone, btnPeding, btnDelete } from './actions'
 
 const List = props => {
 
     const tableRow = () => {
         const listTable = props.list || []
-        return listTable.map(todo => (
-            <tr key={todo._id}>
-                <td className={todo.done ? 'markedAsDone' : ''}>{todo.description}</td>
+        return listTable.map(tasks => (
+            <tr key={tasks._id}>
+                <td className={tasks.done ? 'markedAsDone' : ''}>{tasks.description}</td>
                 <td>
-                    <button type="button" className="btn btn-success" onClick={() => props.markedAsDone(todo)}>OK</button>
-                    <button type="button" className="btn btn-warning" onClick={() => props.markedAsPeding(todo)}>P</button>
-                    <button type="button" className="btn btn-danger" onClick={() => props.remove(todo)}>X</button>
+                    <button type="button" className="btn btn-success" onClick={() => props.btnDone(tasks)}>OK</button>
+                    <button type="button" className="btn btn-warning" onClick={() => props.btnPeding(tasks)}>P</button>
+                    <button type="button" className="btn btn-danger" onClick={() => props.btnDelete(tasks)}>X</button>
                 </td>
             </tr>
         ))
@@ -33,5 +33,5 @@ const List = props => {
     )
 }
 const mapStateToProps = state => ({ list: state.todo.list })
-const mapDispatchToProps = dispatch => bindActionCreators({ markedAsDone, markedAsPeding, remove }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ btnDone, btnPeding, btnDelete }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(List)

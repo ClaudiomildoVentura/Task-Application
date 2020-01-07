@@ -6,6 +6,16 @@ export const changeDescription = e => ({
     type: 'CHANGE', payload: e.target.value
 })
 
+export const add = (description) => {
+    return dispatch => {
+        axios.post(URL, { description })
+            .then(resp => dispatch(clear()))
+            .then(resp => dispatch(search()))
+    }
+}
+export const clear = () => {
+    return [{ type: 'CLEAR' }, search()]
+}
 export const search = (description) => {
     return (dispatch, getState) => {
         const description = getState().todo.description
@@ -14,36 +24,21 @@ export const search = (description) => {
             .then(resp => dispatch({ type: 'SEARCH', payload: resp.data }))
     }
 }
-
-export const add = (description) => {
+export const btnDelete = (tasks) => {
     return dispatch => {
-        axios.post(URL, { description })
-            .then(resp => dispatch(clear()))
+        axios.delete(`${URL}/${tasks._id}`)
             .then(resp => dispatch(search()))
     }
 }
-
-export const markedAsDone = (todo) => {
+export const btnDone = (tasks) => {
     return dispatch => {
-        axios.put(`${URL}/${todo._id}`, { ...todo, done: true })
+        axios.put(`${URL}/${tasks._id}`, { ...tasks, done: true })
             .then(resp => dispatch(search()))
     }
 }
-
-export const markedAsPeding = (todo) => {
+export const btnPeding = (tasks) => {
     return dispatch => {
-        axios.put(`${URL}/${todo._id}`, { ...todo, done: false })
+        axios.put(`${URL}/${tasks._id}`, { ...tasks, done: false })
             .then(resp => dispatch(search()))
     }
-}
-
-export const remove = (todo) => {
-    return dispatch => {
-        axios.delete(`${URL}/${todo._id}`)
-            .then(resp => dispatch(search()))
-    }
-}
-
-export const clear = () => {
-    return [{ type: 'CLEAR' }, search()]
 }
