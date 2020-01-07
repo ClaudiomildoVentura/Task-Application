@@ -22,7 +22,7 @@ class Form extends Component {
         this.props.search()
     }
     render() {
-        const { add, description } = this.props
+        const { add, search, description } = this.props
         return (
             <div role='form' className='Form row'>
                 <div className='col-xs-12 col-sm-9 col-md-10'>
@@ -38,7 +38,7 @@ class Form extends Component {
                 </div>
                 <div>
                     <button type="button" className='btn btn-primary' onClick={()=> add(description)}>+</button>
-                    <button type="button" className='btn btn-info' onClick={this.props.Search}>°</button>
+                    <button type="button" className='btn btn-info' onClick={()=>search()}>°</button>
                     <button type="button" className='btn btn-secundary' onClick={this.props.clear}>''</button>
                 </div>
             </div>
